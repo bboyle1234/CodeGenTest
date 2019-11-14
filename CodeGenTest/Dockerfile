@@ -2,6 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/runtime:3.0-buster-slim AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+ENV DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX=2
 WORKDIR /src
 COPY ["CodeGenTest/CodeGenTest.csproj", "CodeGenTest/"]
 RUN dotnet restore "CodeGenTest/CodeGenTest.csproj"
